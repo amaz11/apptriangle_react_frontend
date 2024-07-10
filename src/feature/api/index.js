@@ -3,10 +3,7 @@ import { getTokenFromLocalStorage } from "../../utils/token"
 const apiSlice = createApi({
     reducePath: "api",
     baseQuery: fetchBaseQuery({
-        baseUrl: `http://localhost:8000/api/v1/`,
-        headers: {
-            Authorization: `Bearer ${getTokenFromLocalStorage()}`
-        }
+        baseUrl: `https://apptriangle-node-backend.onrender.com/api/v1/`,
     }),
     endpoints: (builder) => ({})
 })

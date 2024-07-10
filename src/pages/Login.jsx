@@ -5,8 +5,9 @@ import { useLoginUserMutation } from '../feature/authApi';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contextApi/AuthContext';
+import { getTokenFromLocalStorage } from '../utils/token';
 const Login = () => {
-    const [loginUser] = useLoginUserMutation();
+    const [loginUser, { isLoading }] = useLoginUserMutation();
     const [formData, setFormData] = useState({
         email: '',
         password: '',
@@ -27,6 +28,7 @@ const Login = () => {
             if (res.ok === true) {
                 if (res?.data.role === "ADMIN") {
                     localStorage.setItem('X_auth_token', res.token)
+                    getTokenFromLocalStorage(res.token)
                     setToken(res.token)
                     setIsLoading(false)
                     navigate('/')
@@ -69,14 +71,15 @@ const Login = () => {
                                     onChange={handleChange}
                                     required
                                 />
-                                <button className="flex justify-center items-center bg-green-400 hover:bg-green-700 focus:shadow-outline mt-5 py-4 rounded-lg w-full font-semibold text-white-500 hover:text-white tracking-wide transition-all duration-300 ease-in-out focus:outline-none" disabled={isLoaging}>
+                                <button className="flex justify-center items-center bg-green-400 hover:bg-green-700 focus:shadow-outline mt-5 py-4 rounded-lg w-full font-semibold text-white-500 hover:text-white tracking-wide transition-all duration-300 cursor-pointer ease-in-out focus:outline-none" disabled={isLoaging}>
                                     <svg className="-ml-2 w-6 h-6" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
                                         <path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
                                         <circle cx="8.5" cy={7} r={4} />
                                         <path d="M20 8v6M23 11h-6" />
                                     </svg>
                                     <span className="ml-">
-                                        Sign In
+                                        {isLoading ? "Loading..." : "Sign In"}
+
                                     </span>
                                 </button>
                             </div>

@@ -1,3 +1,4 @@
+import { getTokenFromLocalStorage } from "../utils/token";
 import apiSlice from "./api";
 
 
@@ -7,6 +8,9 @@ const TeamApi = apiSlice.injectEndpoints({
             query: (data) => ({
                 method: "POST",
                 url: "/team",
+                headers: {
+                    Authorization: `Bearer ${getTokenFromLocalStorage()}`
+                },
                 body: data,
             }),
             invalidatesTags: ['Team'],
@@ -15,17 +19,26 @@ const TeamApi = apiSlice.injectEndpoints({
         getAllTeam: builder.query({
             query: () => ({
                 url: `/team`,
+                headers: {
+                    Authorization: `Bearer ${getTokenFromLocalStorage()}`
+                }
             }),
             providesTags: ['Team'],
         }),
         getTeamID: builder.query({
             query: (id) => ({
                 url: `/team/${id}`,
+                headers: {
+                    Authorization: `Bearer ${getTokenFromLocalStorage()}`
+                }
             }),
         }),
         updateTeam: builder.mutation({
             query: ({ id, data }) => ({
                 url: `team/${id}`,
+                headers: {
+                    Authorization: `Bearer ${getTokenFromLocalStorage()}`
+                },
                 method: 'PUT',
                 body: data,
             }),
@@ -34,6 +47,9 @@ const TeamApi = apiSlice.injectEndpoints({
         deleteTeam: builder.mutation({
             query: (id) => ({
                 url: `team/${id}`,
+                headers: {
+                    Authorization: `Bearer ${getTokenFromLocalStorage()}`
+                },
                 method: 'DELETE',
             }),
             invalidatesTags: ['Team'],

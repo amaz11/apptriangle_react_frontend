@@ -1,3 +1,4 @@
+import { getTokenFromLocalStorage } from "../utils/token";
 import apiSlice from "./api";
 
 
@@ -6,6 +7,9 @@ const LeavesApi = apiSlice.injectEndpoints({
         getAllLeaves: builder.query({
             query: () => ({
                 url: `/leaves`,
+                headers: {
+                    Authorization: `Bearer ${getTokenFromLocalStorage()}`
+                }
             }),
             providesTags: ['Leaves'],
         }),
@@ -15,6 +19,9 @@ const LeavesApi = apiSlice.injectEndpoints({
                 url: `leaves/admin/${id}`,
                 method: 'PATCH',
                 body: data,
+                headers: {
+                    Authorization: `Bearer ${getTokenFromLocalStorage()}`
+                }
             }),
             invalidatesTags: ['Leaves'],
         }),

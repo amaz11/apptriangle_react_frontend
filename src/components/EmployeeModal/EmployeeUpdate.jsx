@@ -5,7 +5,7 @@ import { useUpdateUserMutation } from '../../feature/employeeApi';
 
 
 const EmployeeUpdateModal = ({ name, employee }) => {
-    const [updateUser] = useUpdateUserMutation()
+    const [updateUser, { isLoading }] = useUpdateUserMutation()
     const [formData, setFormData] = useState({
         name: employee.name || '',
         email: employee.email || '',
@@ -75,7 +75,10 @@ const EmployeeUpdateModal = ({ name, employee }) => {
                             <option value="TEAMLEADER">TeamLeader</option>
                         </select>
                     </div>
-                    <button type="submit" className="bg-blue-500 hover:bg-blue-600 py-2 rounded-md w-full text-white transition">Add Task</button>
+                    <button type="submit" className="bg-blue-500 hover:bg-blue-600 py-2 rounded-md w-full text-white transition">
+                        {isLoading ? "Loading..." : "Update Employee"
+                        }
+                    </button>
                 </form>
             </div>
         </Modal>

@@ -9,7 +9,6 @@ const Attendence = () => {
         isFetching,
         isError,
         error, } = useGetAllAttendeceQuery()
-    console.log(data);
     return (
         <div>
             <AttendecTable attendence={data?.data} isFetching={isFetching} isLoading={isLoading} error={error} isError={isError} />

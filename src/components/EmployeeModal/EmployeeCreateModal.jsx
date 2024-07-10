@@ -4,7 +4,7 @@ import Modal from '../Modal';
 import { usePostUserMutation } from '../../feature/employeeApi';
 
 const EmployeeCreateModal = () => {
-    const [postUser] = usePostUserMutation()
+    const [postUser, { isLoading }] = usePostUserMutation()
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -21,14 +21,12 @@ const EmployeeCreateModal = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            console.log(formData);
             const res = await postUser(formData).unwrap();
             if (res.ok) {
                 toast.success('Task has been Created');
             }
 
         } catch (error) {
-            console.log(error);
             toast.error(error.data.error)
         }
     };
@@ -76,7 +74,9 @@ const EmployeeCreateModal = () => {
                             <option value="TEAMLEADER">Team Leader</option>
                         </select>
                     </div>
-                    <button type="submit" className="bg-blue-500 hover:bg-blue-600 py-2 rounded-md w-full text-white transition">Add Task</button>
+                    <button type="submit" className="bg-blue-500 hover:bg-blue-600 py-2 rounded-md w-full text-white transition">
+                        {isLoading ? "Loading..." : "Create Employee"
+                        }</button>
                 </form>
             </div>
         </Modal>

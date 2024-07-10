@@ -12,7 +12,6 @@ const Employee = () => {
         isFetching,
         isError,
         error, } = useGetAllUserQuery({ page, limit, search })
-    console.log(employee);
     return (
         <div>
             <EmployeeCreateModal />

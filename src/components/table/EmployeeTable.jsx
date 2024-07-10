@@ -71,7 +71,7 @@ const EmployeeTable = ({ employee, isLoading,
                     </tr>
                 </thead>
                 <tbody>
-                    {isLoading || isFetching ? <TableSkeleton col={8} /> : employee?.lenght === 0 ? <tr><td colSpan="8" className='p-8 font-semibold text-center'>There No data Here</td></tr> : employee?.map((item, index) => (
+                    {isLoading || isFetching ? <TableSkeleton col={8} /> : employee?.length === 0 ? <tr><td colSpan="8" className='p-8 font-semibold text-center'>There No data Here</td></tr> : employee?.map((item, index) => (
                         <React.Fragment key={item.id}>
                             <tr className="border">
                                 <td className="px-4 py-2 border text-center text-sm">{index + 1}</td>

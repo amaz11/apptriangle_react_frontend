@@ -48,7 +48,7 @@ const LeaveAdminUpdate = ({ leave, name }) => {
                         </select>
                     </div>
                     {isRejected ? <input type='text' className="mt-1 p-2 border rounded-md w-full focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4" placeholder='Note' onChange={handleChange} value={formData.noteAdmin} /> : null}
-                    <button type="submit" disabled={isLoading} className="bg-blue-500 hover:bg-blue-600 py-2 rounded-md w-full text-white transition">Update Status</button>
+                    <button type="submit" disabled={isLoading} className="bg-blue-500 hover:bg-blue-600 py-2 rounded-md w-full text-white transition">{isLoading ? "Loading..." : "Update Status"}</button>
                 </form>
             </div>
         </Modal>
