@@ -10,7 +10,6 @@ const Leaves = () => {
         error, } = useGetAllLeavesQuery()
     return (
         <div>
-            <span>/leaves</span>
             <LeavesTable leaves={data?.data} isFetching={isFetching} isLoading={isLoading} error={error} isError={isError} />
         </div>
     )
