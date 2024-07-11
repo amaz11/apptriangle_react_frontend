@@ -1,6 +1,7 @@
 import React from 'react'
 import { useGetAllTeamQuery } from '../feature/teamApi';
 import TeamTable from '../components/table/TeamTable';
+import TeamCreateModal from '../components/TeamModal.js/TeamCreateModal';
 
 
 const Team = () => {
@@ -11,6 +12,7 @@ const Team = () => {
         error, } = useGetAllTeamQuery()
     return (
         <div>
+            <TeamCreateModal />
             <TeamTable team={data?.data} isFetching={isFetching} isLoading={isLoading} error={error} isError={isError} />
         </div>
     )

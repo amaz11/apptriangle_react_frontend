@@ -25,6 +25,16 @@ const UserApi = apiSlice.injectEndpoints({
             }),
             providesTags: ['User'],
         }),
+        getAllUsers: builder.query({
+            query: () => ({
+                url: `/users/all/user`,
+                headers: {
+                    Authorization: `Bearer ${getTokenFromLocalStorage()}`
+                }
+            }),
+            providesTags: ['User'],
+        }),
+
         getUserID: builder.query({
             query: (id) => ({
                 url: `/users/${id}`,
@@ -57,4 +67,4 @@ const UserApi = apiSlice.injectEndpoints({
     }),
 });
 
-export const { useDeleteUserMutation, useGetUserIDQuery, usePostUserMutation, useUpdateUserMutation, useGetAllUserQuery } = UserApi;
+export const { useDeleteUserMutation, useGetUserIDQuery, usePostUserMutation, useUpdateUserMutation, useGetAllUserQuery, useGetAllUsersQuery } = UserApi;

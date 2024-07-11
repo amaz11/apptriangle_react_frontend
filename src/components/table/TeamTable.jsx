@@ -87,8 +87,8 @@ const TeamTable = ({ team, isLoading,
 const Details = ({ team }) => {
     return <div>
         <p className='font-medium'><span className='font-semibold'>Name:</span> {team.name}</p>
-        <p className='font-medium'><span className='font-semibold'>Email:</span> {team.teamhead.name}</p>
-        <p className='font-medium'><span className='font-semibold'>Phone:</span> {team?.members?.map(item => <span className='after:content-[","] after:last:content-[""] mr-2 last:mr-0' key={item.id}>{item.name}</span>)}</p>
+        <p className='font-medium'><span className='font-semibold'>Team Lead:</span> {team.teamhead.name}</p>
+        <p className='font-medium'><span className='font-semibold'>Meambers:</span> {team?.members?.map(item => <span className='after:content-[","] after:last:content-[""] mr-2 last:mr-0' key={item.id}>{item.name}</span>)}</p>
     </div>;
 };
 

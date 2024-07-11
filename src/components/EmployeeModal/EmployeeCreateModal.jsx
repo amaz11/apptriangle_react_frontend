@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { toast } from 'react-toastify';
 import Modal from '../Modal';
 import { usePostUserMutation } from '../../feature/employeeApi';
+import { FaPlus } from "react-icons/fa6";
 
 const EmployeeCreateModal = () => {
     const [postUser, { isLoading }] = usePostUserMutation()
@@ -33,7 +34,7 @@ const EmployeeCreateModal = () => {
 
     return (
 
-        <Modal title={"Create Employee"} name={"Add Employee"}>
+        <Modal title={"Create Employee"} name={<div className='flex items-center gap-2 bg-blue-500 px-2 py-1.5 rounded font-semibold text-white'><FaPlus />  Add Employee</div>}>
             <div className="">
                 <form onSubmit={handleSubmit}>
                     <div className="mb-4">
